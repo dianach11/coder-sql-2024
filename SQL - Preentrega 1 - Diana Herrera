@@ -1,0 +1,481 @@
+-- Diana Herrera / Preentrega 1 / SQL - Coderhouse 53715
+
+-- Crear base de datos ManchasCo si no existe
+CREATE DATABASE IF NOT EXISTS ManchasCo;
+
+-- Usar la base de datos para nuestro estudio
+USE ManchasCo;
+
+-- Drop table para evitar que los registros se creen multiples veces
+DROP TABLE IF EXISTS Employee;
+
+-- Crear la tabla 1. Empleados
+-- Tabla dimensional donde se guardan los datos de ingreso al sistema de los empleados
+CREATE TABLE IF NOT EXISTS Employee (
+    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeName VARCHAR(70),
+    JobCode INT,
+    EntityID INT,
+    Email VARCHAR(100) 
+);
+
+-- Llenar la base de datos con los empleados
+INSERT INTO Employee (EmployeeName, JobCode, EntityID, Email) VALUES 
+('Santiago Calvo', 1017, 298, 'santiago.calvo@manchas.co'),
+('Francisco Barroso', 1009, 53, 'fran.barroso2@manchas.co'),
+('Rocky Balboa', 1006, 23, 'rocky.balboa@manchas.co'),
+('Adrian Pennino', 1007, 42, 'adrian.pennino@manchas.co'),
+('Apollo Creed', 1000, 55, 'apollo.creed@manchas.co'),
+('Mickey Goldmill', 1010, 18, 'mickey.goldmill@manchas.co'),
+('Paulie Pennino', 1019, 36, 'paulie.pennino@manchas.co'),
+('Ivan Drago', 1017, 29, 'ivan.drago@manchas.co'),
+('Clubber Lang', 1008, 67, 'clubber.lang@manchas.co'),
+('Mason Dixon', 1000, 14, 'mason.dixon@manchas.co'),
+('Tommy Gunn', 1009, 49, 'tommy.gunn@manchas.co'),
+('Rocky Jr.', 1005, 31, 'rocky.jr@manchas.co'),
+('Rachel Green', 1018, 298, 'rachel.green@manchas.co'),
+('Monica Geller', 1009, 53, 'monica.geller@manchas.co'),
+('Phoebe Buffay', 1019, 23, 'phoebe.buffay@manchas.co'),
+('Martina Costilla', 1006, 23, 'martina.costilla@manchas.co'),
+('Joey Tribbiani', 1010, 42, 'joey.tribbiani@manchas.co'),
+('Chandler Bing', 1018, 55, 'chandler.bing@manchas.co'),
+('Ross Geller', 1007, 18, 'ross.geller@manchas.co'),
+('Jerry Seinfeld', 1007, 36, 'jerry.seinfeld@manchas.co'),
+('Elaine Benes', 1009, 29, 'elaine.benes@manchas.co'),
+('Cosmo Kramer', 1006, 67, 'cosmo.kramer@manchas.co'),
+('George Costanza', 1008, 14, 'george.costanza@manchas.co'),
+('Frank Costanza', 1006, 31, 'frank.costanza@manchas.co'),
+('Estelle Costanza', 1018, 298, 'estelle.costanza@manchas.co'),
+('Susan Ross', 1010, 53, 'susan.ross@manchas.co'),
+('David Puddy', 1018, 23, 'david.puddy@manchas.co'),
+('Helen Seinfeld', 1007, 42, 'helen.seinfeld@manchas.co'),
+('Homer Simpson', 1017, NULL, 'homer.simpson@manchas.co'),
+('Marge Simpson', 1019, NULL, 'marge.simpson@manchas.co'),
+('Bart Simpson', 1005, NULL, 'bart.simpson@manchas.co'),
+('Lisa Simpson', 1019, NULL, 'lisa.simpson@manchas.co'),
+('Maggie Simpson', 1019, NULL, 'maggie.simpson@manchas.co'),
+('Ned Flanders', 1010, 125, 'ned.flanders@manchas.co'),
+('Principal Skinner', 1017, 125, 'principal.skinner@manchas.co'),
+('Moe Szyslak', 1017, 125, 'moe.szyslak@manchas.co'),
+('Mr. Burns', 1010, 126, 'mr.burns@manchas.co'),
+('Krusty the Clown', 1010, 126, 'krusty.clown@manchas.co'),
+('Victoria Beckham', 1000, 189, 'victoria.beckham@manchas.co'),
+('David Beckham', 1018, 189, 'david.beckham@manchas.co'),
+('Harry Windsor', 1018, 189, 'harry.windsor@manchas.co'),
+('Meghan Markle', 1010, NULL, 'meghan.markle@manchas.co'),
+('Felipe de Borbón', 1005, 189, 'felipe.borbon@manchas.co'),
+('Letizia Ortiz', 1008, 124, 'letizia.ortiz@manchas.co'),
+('Guillermo de Inglaterra', 1019, 124, 'guillermo.inglaterra@manchas.co'),
+('Catalina Middleton', 1010, 124, 'catalina.middleton@manchas.co'),
+('Carlos de Inglaterra', 1007, 15, 'carlos.inglaterra@manchas.co'),
+('Camilla Parker', 1018, 15, 'camilla.parker@manchas.co'),
+('Máxima Zorreguieta', 1008, 15, 'maxima.zorreguieta@manchas.co'),
+('Marie-Chantal Miller', 1005, NULL, 'mariechantal.miller@manchas.co'),
+('Guillermo Luxemburgo', 1019, 98, 'guillermo.luxemburgo@manchas.co'),
+('Máxima Luxemburgo', 1007, 98, 'maxima.luxemburgo@manchas.co'),
+('Haakon de Noruega', 1018, 189, 'haakon.noruega@manchas.co'),
+('Mette-Marit de Noruega', 1005, 189, 'mettemarit.noruega@manchas.co'),
+('Naruhito de Japón', 1018, 124, 'naruhito.japon@manchas.co'),
+('Masako Owada', 1006, 124, 'masako.owada@manchas.co'),
+('Felipe VI de España', 1006, 15, 'felipe.espana@manchas.co'),
+('Rania de Jordania', 1009, 98, 'rania.jordania@manchas.co'),
+('Diego Maradona', 1019, 98, 'diego.maradona@manchas.co'),
+('Lionel Messi', 1017, 98, 'lionel.messi@manchas.co'),
+('Carlos Gardel', 1008, 98, 'carlos.gardel@manchas.co'),
+('Gabriel García Márquez', 1006, 53, 'gabriel.garcia@manchas.co'),
+('Pablo Neruda', 1017, 53, 'pablo.neruda@manchas.co'),
+('Frida Kahlo', 1010, 53, 'frida.kahlo@manchas.co'),
+('Salvador Dalí', 1009, 53, 'salvador.dali@manchas.co'),
+('Pablo Picasso', 1009, 15, 'pablo.picasso@manchas.co'),
+('Diego Rivera', 1017, 15, 'diego.rivera@manchas.co'),
+('Antonio Banderas', 1019, 15, 'antonio.banderas@manchas.co'),
+('Penélope Cruz', 1006, 15, 'penelope.cruz@manchas.co'),
+('Pedro Almodóvar', 1006, 189, 'pedro.almodovar@manchas.co'),
+('Sofía Vergara', 1007, 189, 'sofia.vergara@manchas.co'),
+('Gael García Bernal', 1019, 189, 'gael.bernal@manchas.co'),
+('Ricardo Darín', 1007, 98, 'ricardo.darin@manchas.co'),
+('Juan Cruz Giacche', 1019, 189, 'juan.cruz.giacche@manchas.co'),
+('Luisana Lopilato', 1005, 98, 'luisana.lopilato@manchas.co'),
+('Marta Minujín', 1010, 98, 'marta.minujin@manchas.co'),
+('Mercedes Sosa', 1008, 98, 'mercedes.sosa@manchas.co'),
+('Che Guevara', 1009, NULL, 'che.guevara@manchas.co'),
+('Eva Perón', 1019, NULL, 'eva.peron@manchas.co'),
+('Carlos Monzón', 1009, NULL, 'carlos.monzon@manchas.co'),
+('Julio Cortázar', 1005, NULL, 'julio.cortazar@manchas.co'),
+('Jorge Luis Borges', 1018, NULL, 'jorge.borges@manchas.co'),
+('José de San Martín', 1007, NULL, 'jose.sanmartin@manchas.co'),
+('Juan Manuel Fangio', 1010, NULL, 'juan.fangio@manchas.co'),
+('René Favaloro', 1006, NULL, 'rene.favaloro@manchas.co'),
+('Gabriela Sabatini', 1017, NULL, 'gabriela.sabatini@manchas.co'),
+('Luis Federico Leloir', 1009, NULL, 'luis.leloir@manchas.co'),
+('César Milstein', 1010, NULL, 'cesar.milstein@manchas.co'),
+('Jorge Bergoglio', 1006, NULL, 'jorge.bergoglio@manchas.co'),
+('Lionel Messi', 1019, NULL, 'lionel.messi2@manchas.co'),
+('Jorge Burruchaga', 1008, 15, 'jorge.burruchaga@manchas.co'),
+('Héctor Enrique', 1017, 53, 'hector.enrique@manchas.co'),
+('Sergio Batista', 1018, 98, 'sergio.batista@manchas.co'),
+('Gabriel García Márquez', 1010, NULL, 'gabriel.garcia2@manchas.co'),
+('Carlos Gardel', 1009, NULL, 'carlos.gardel2@manchas.co'),
+('Sergio Ramos', 1019, NULL, 'sergio.ramos@manchas.co'),
+('Karim Benzema', 1006, NULL, 'karim.benzema@manchas.co'),
+('Luka Modric', 1010, NULL, 'luka.modric@manchas.co'),
+('Gareth Bale', 1017, NULL, 'gareth.bale@manchas.co'),
+('Thibaut Courtois', 1019, NULL, 'thibaut.courtois@manchas.co');
+
+-- Seleccionar los datos de la tabla Empleados
+SELECT * FROM Employee;
+
+-- Drop table para evitar que los registros se creen multiples veces
+DROP TABLE JobTitle;
+
+-- Crear la tabla 2. JobTitle
+-- Tabla dimensional donde se guardan los datos de puestos de trabajo por empleado. 
+CREATE TABLE IF NOT EXISTS JobTitle (
+    JobCode INT PRIMARY KEY,
+    JobDescription VARCHAR(255) UNIQUE
+) AUTO_INCREMENT=1000;
+
+-- Llenar la base de datos con los puestos de trabajo
+INSERT INTO JobTitle (JobCode, JobDescription) VALUES
+(1000, 'Ingeniero Civil'),
+(1001, 'Ingeniero Mecánico'),
+(1002, 'Ingeniero Eléctrico'),
+(1003, 'Ingeniero Químico'),
+(1004, 'Ingeniero de Software'),
+(1005, 'Ingeniero Industrial'),
+(1006, 'Ingeniero de Sistemas'),
+(1007, 'Ingeniero Agrónomo'),
+(1008, 'Ingeniero de Telecomunicaciones'),
+(1009, 'Ingeniero de Procesos'),
+(1010, 'Carpintero de Madera'),
+(1011, 'Ebanista'),
+(1012, 'Carpintero Metálico'),
+(1013, 'Carpintero de Aluminio'),
+(1014, 'Carpintero Naval'),
+(1015, 'Carpintero de Obra'),
+(1016, 'Asistente Administrativo'),
+(1017, 'Secretario'),
+(1018, 'Recepcionista'),
+(1019, 'Coordinador Administrativo'),
+(1020, 'Auxiliar Contable');
+
+-- Seleccionar los datos de la tabla JobTitle, mostrar por orden de código
+SELECT * FROM JobTitle
+ORDER BY JobCode;
+
+-- Drop table para evitar que los registros se creen multiples veces
+DROP TABLE IF EXISTS QualPercent;
+
+-- Crear la tabla 3. QualPercent
+-- Tabla de hecho que contiene la calificación técnica en porcentaje de cada puesto de trabajo
+CREATE TABLE IF NOT EXISTS QualPercent (
+    JobCode INT,
+    TechnicalQual DECIMAL (3,2)
+);
+
+-- Llenar la tabla QualPercent con la calificación técnica de cada puesto de trabajo
+INSERT INTO QualPercent (JobCode, TechnicalQual) VALUES
+(1000, 1),
+(1001, 1),
+(1002, 1),
+(1003, 1),
+(1004, 1),
+(1005, 1),
+(1006, 1),
+(1007, 1),
+(1008, 1),
+(1009, 1),
+(1010, 0.05),
+(1011, 0.1),
+(1012, 0.15),
+(1013, 0.15),
+(1014, 0.2),
+(1015, 0.2),
+(1016, 0),
+(1017, 0),
+(1018, 0),
+(1019, 0),
+(1020, 0.1);
+
+SELECT * FROM QualPercent;
+
+-- Drop table para evitar que los registros se creen multiples veces
+DROP TABLE IF EXISTS RRHH;
+
+-- Crear la tabla 4. RRHH
+-- Tabla dimensional que contiene información extra acerca de cada empleado no relevante directamente para el estudio pero que podría derivar en otros reportes
+CREATE TABLE IF NOT EXISTS RRHH (
+    EmployeeName VARCHAR(70),
+    HireDate DATE NOT NULL,
+    TerminationDate DATE,
+    City VARCHAR(20),
+    WorkType VARCHAR(20) DEFAULT "Híbrido"    
+);
+
+-- Llenar la base de datos de RRHH
+INSERT INTO RRHH (EmployeeName, HireDate, TerminationDate, City, WorkType) VALUES
+('Santiago Calvo', '2015-02-10', NULL, 'New York', 'Presencial'),
+('Francisco Barroso', '2010-07-20', NULL, 'Buenos Aires', 'Híbrido'),
+('Rocky Balboa', '2005-11-15', NULL, 'Roma', 'Remoto'),
+('Adrian Pennino', '2013-04-30', '2018-06-25', 'Los Angeles', 'Híbrido'),
+('Apollo Creed', '1987-09-05', NULL, 'Córdoba', 'Remoto'),
+('Mickey Goldmill', '1995-12-18', NULL, 'Milán', 'Presencial'),
+('Paulie Pennino', '2009-03-02', NULL, 'Chicago', 'Remoto'),
+('Ivan Drago', '2017-06-11', NULL, 'Buenos Aires', 'Presencial'),
+('Clubber Lang', '2011-10-28', NULL, 'Roma', 'Híbrido'),
+('Mason Dixon', '2000-01-15', '2019-08-04', 'Miami', 'Remoto'),
+('Tommy Gunn', '2007-04-20', NULL, 'Buenos Aires', 'Presencial'),
+('Rocky Jr.', '2012-08-03', NULL, 'Milán', 'Híbrido'),
+('Rachel Green', '1998-11-27', NULL, 'Los Angeles', 'Remoto'),
+('Monica Geller', '2003-02-14', NULL, 'Buenos Aires', 'Presencial'),
+('Phoebe Buffay', '2016-05-01', NULL, 'Roma', 'Híbrido'),
+('Martina Costilla', '2008-07-09', NULL, 'New York', 'Remoto'),
+('Joey Tribbiani', '2014-10-17', NULL, 'Buenos Aires', 'Presencial'),
+('Chandler Bing', '2004-01-29', NULL, 'Milán', 'Híbrido'),
+('Ross Geller', '2011-04-10', NULL, 'Los Angeles', 'Remoto'),
+('Jerry Seinfeld', '2006-08-22', NULL, 'Buenos Aires', 'Presencial'),
+('Elaine Benes', '2010-12-05', NULL, 'Roma', 'Híbrido'),
+('Cosmo Kramer', '1997-03-15', NULL, 'New York', 'Remoto'),
+('George Costanza', '2002-06-28', NULL, 'Buenos Aires', 'Presencial'),
+('Frank Costanza', '2013-09-19', NULL, 'Milán', 'Híbrido'),
+('Estelle Costanza', '2005-01-22', NULL, 'Los Angeles', 'Remoto'),
+('Susan Ross', '2012-05-13', NULL, 'Buenos Aires', 'Presencial'),
+('David Puddy', '2019-08-30', NULL, 'Roma', 'Híbrido'),
+('Helen Seinfeld', '2001-10-08', NULL, 'New York', 'Remoto'),
+('Homer Simpson', '1994-01-04', NULL, 'Buenos Aires', 'Presencial'),
+('Marge Simpson', '1999-04-23', NULL, 'Milán', 'Híbrido'),
+('Bart Simpson', '2008-07-11', NULL, 'Los Angeles', 'Remoto'),
+('Lisa Simpson', '2013-10-05', NULL, 'Buenos Aires', 'Presencial'),
+('Maggie Simpson', '2018-02-20', NULL, 'New York', 'Híbrido'),
+('Ned Flanders', '2007-06-15', NULL, 'Buenos Aires', 'Remoto'),
+('Principal Skinner', '2015-09-03', NULL, 'Milán', 'Presencial'),
+('Moe Szyslak', '2003-12-30', NULL, 'Los Angeles', 'Híbrido'),
+('Mr. Burns', '1998-05-17', NULL, 'Buenos Aires', 'Remoto'),
+('Krusty the Clown', '2011-08-11', NULL, 'Roma', 'Presencial'),
+('Victoria Beckham', '2016-11-28', NULL, 'New York', 'Híbrido'),
+('David Beckham', '2009-03-13', NULL, 'Buenos Aires', 'Remoto'),
+('Harry Windsor', '2005-06-20', NULL, 'Milán', 'Presencial'),
+('Meghan Markle', '2012-09-15', NULL, 'Los Angeles', 'Híbrido'),
+('Felipe de Borbón', '2001-12-05', NULL, 'Buenos Aires', 'Remoto'),
+('Letizia Ortiz', '2010-02-10', NULL, 'Roma', 'Presencial'),
+('Guillermo de Inglaterra', '2008-07-03', NULL, 'New York', 'Híbrido'),
+('Catalina Middleton', '2014-09-25', NULL, 'Buenos Aires', 'Remoto'),
+('Carlos de Inglaterra', '2006-11-17', NULL, 'Milán', 'Presencial'),
+('Camilla Parker', '2011-02-14', NULL, 'Los Angeles', 'Híbrido'),
+('Máxima Zorreguieta', '2004-03-27', NULL, 'Buenos Aires', 'Remoto'),
+('Marie-Chantal Miller', '2017-06-22', NULL, 'Roma', 'Presencial'),
+('Guillermo Luxemburgo', '1999-09-10', NULL, 'New York', 'Híbrido'),
+('Máxima Luxemburgo', '2002-11-04', NULL, 'Buenos Aires', 'Remoto'),
+('Haakon de Noruega', '2015-01-09', NULL, 'Milán', 'Presencial'),
+('Mette-Marit de Noruega', '2008-02-28', NULL, 'Los Angeles', 'Híbrido'),
+('Naruhito de Japón', '2003-05-17', NULL, 'Buenos Aires', 'Remoto'),
+('Masako Owada', '2011-08-11', NULL, 'Roma', 'Presencial'),
+('Felipe VI de España', '2007-09-25', NULL, 'New York', 'Híbrido'),
+('Rania de Jordania', '2013-12-13', NULL, 'Buenos Aires', 'Remoto'),
+('Diego Maradona', '2018-02-28', NULL, 'Milán', 'Presencial'),
+('Lionel Messi', '2002-05-11', NULL, 'Los Angeles', 'Híbrido'),
+('Carlos Gardel', '2010-08-17', NULL, 'Buenos Aires', 'Remoto'),
+('Gabriel García Márquez', '2004-11-20', NULL, 'Roma', 'Presencial'),
+('Pablo Neruda', '1998-02-06', NULL, 'New York', 'Híbrido'),
+('Frida Kahlo', '2015-05-09', NULL, 'Buenos Aires', 'Remoto'),
+('Salvador Dalí', '2006-07-22', NULL, 'Milán', 'Presencial'),
+('Pablo Picasso', '2013-09-14', NULL, 'Los Angeles', 'Híbrido'),
+('Diego Rivera', '2009-10-08', NULL, 'Buenos Aires', 'Remoto'),
+('Antonio Banderas', '1996-01-02', NULL, 'Roma', 'Presencial'),
+('Penélope Cruz', '2001-03-15', NULL, 'New York', 'Híbrido'),
+('Pedro Almodóvar', '2017-06-29', NULL, 'Buenos Aires', 'Remoto'),
+('Sofía Vergara', '2005-09-07', NULL, 'Milán', 'Presencial'),
+('Gael García Bernal', '2014-11-10', NULL, 'Los Angeles', 'Híbrido'),
+('Ricardo Darín', '2008-12-25', NULL, 'Buenos Aires', 'Remoto'),
+('Juan Cruz Giacche', '2016-03-18', NULL, 'Roma', 'Presencial'),
+('Luisana Lopilato', '2003-06-30', NULL, 'New York', 'Híbrido'),
+('Marta Minujín', '2010-09-25', NULL, 'Buenos Aires', 'Remoto'),
+('Mercedes Sosa', '2006-11-11', NULL, 'Milán', 'Presencial'),
+('Che Guevara', '2017-02-13', NULL, 'Los Angeles', 'Híbrido'),
+('Eva Perón', '2002-05-08', NULL, 'Buenos Aires', 'Remoto'),
+('Carlos Monzón', '2008-08-31', NULL, 'Roma', 'Presencial'),
+('Julio Cortázar', '1999-11-15', NULL, 'New York', 'Híbrido'),
+('Jorge Luis Borges', '2014-01-28', NULL, 'Buenos Aires', 'Remoto'),
+('José de San Martín', '2005-04-03', NULL, 'Milán', 'Presencial'),
+('Juan Manuel Fangio', '2011-07-18', NULL, 'Los Angeles', 'Híbrido'),
+('René Favaloro', '2007-10-22', NULL, 'Buenos Aires', 'Remoto'),
+('Gabriela Sabatini', '2016-01-09', NULL, 'Roma', 'Presencial'),
+('Luis Federico Leloir', '2001-04-05', NULL, 'New York', 'Híbrido'),
+('César Milstein', '2012-07-19', NULL, 'Buenos Aires', 'Remoto'),
+('Jorge Bergoglio', '2009-09-03', NULL, 'Milán', 'Presencial'),
+('Lionel Messi', '2006-11-27', NULL, 'Los Angeles', 'Híbrido'),
+('Jorge Burruchaga', '2015-02-10', NULL, 'Buenos Aires', 'Remoto'),
+('Héctor Enrique', '2003-04-15', NULL, 'Roma', 'Presencial'),
+('Sergio Batista', '2011-07-30', NULL, 'New York', 'Híbrido'),
+('Gabriel García Márquez', '2018-10-12', NULL, 'Buenos Aires', 'Remoto'),
+('Carlos Gardel', '2002-01-25', NULL, 'Milán', 'Presencial'),
+('Sergio Ramos', '2014-04-08', NULL, 'Los Angeles', 'Híbrido'),
+('Karim Benzema', '2008-06-12', NULL, 'Buenos Aires', 'Remoto'),
+('Luka Modric', '2010-09-27', NULL, 'Roma', 'Presencial'),
+('Gareth Bale', '2012-12-30', NULL, 'New York', 'Híbrido'),
+('Thibaut Courtois', '2004-03-02', NULL, 'Buenos Aires', 'Remoto');
+
+-- Mostrar la Tabla RRHH
+SELECT * FROM RRHH;
+
+-- Drop table para evitar que los registros se creen multiples veces
+DROP TABLE IF EXISTS ProjectList;
+
+-- Crear Tabla 5. ProjectList
+-- Tabla dimensional donde se guardan los proyectos
+CREATE TABLE IF NOT EXISTS ProjectList (
+	ProjectNumber INT AUTO_INCREMENT PRIMARY KEY,
+    ProjectName VARCHAR (255)
+    );
+
+-- Llenar la tabla ProjectList
+INSERT INTO ProjectList (ProjectName) VALUES
+('Tesla Autopilot Upgrade'),
+('Cybertruck Production Optimization'),
+('SpaceX Mars Mission Planning'),
+('Neuralink Brain-Computer Interface Research'),
+('Model S Performance Enhancement'),
+('Hyperloop Development Phase 2'),
+('Tesla Energy Grid Expansion'),
+('Starlink Satellite Constellation Deployment'),
+('AI-Driven Robotic Arm Development'),
+('GigaFactory Automation Upgrade'),
+('Project X12: Quantum Computing Research'),
+('Neural Network Deep Learning Project'),
+('Falcon Heavy Payload Capacity Enhancement'),
+('Tesla Powerwall 3.0 Integration'),
+('Model 3 Battery Efficiency Improvement'),
+('Smart City IoT Infrastructure Deployment'),
+('Project Cybernetic: Neural Implant Technology'),
+('Tesla Semi-Truck Autonomy Testing'),
+('Mars Rover AI Navigation System'),
+('Project HyperDrive: Warp Engine Prototype'),
+('Neuralink 2.0: Brain Augmentation Trials'),
+('Model Y Electric Motor Innovation'),
+('Project SolarFlare: Solar Panel Efficiency Boost'),
+('Quantum AI Computing Cluster Deployment'),
+('AI-Assisted Medical Diagnosis Project'),
+('Tesla Roadster 2.0 Performance Upgrade'),
+('Project X1: Teleportation Device Experimentation'),
+('Neuralink Sleep Enhancement Interface'),
+('Project Titan: Autonomous Drone Fleet Development');
+
+SELECT * FROM ProjectList;
+
+DROP TABLE IF EXISTS Wages;
+
+-- Crear la tabla 6. Wages
+-- Tabla de hecho donde se guardan los salarios por proyecto y empleados que lo realizan
+CREATE TABLE IF NOT EXISTS Wages (
+	EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
+    ProjectNumber INT,
+    Wage DECIMAL (12,2)
+    );
+    
+-- Llenar la Tabla Wages
+INSERT INTO Wages (ProjectNumber, Wage) VALUES
+(5, 136500.00),
+(22, 391500.00),
+(12, 140500.00),
+(25, 148200.00),
+(8, 143700.00),
+(13, 376000.00),
+(18, 119500.00),
+(26, 394200.00),
+(11, 389800.00),
+(9, 386700.00),
+(24, 125500.00),
+(3, 146400.00),
+(15, 388400.00),
+(5, 131900.00),
+(17, 143600.00),
+(4, 135100.00),
+(27, 141200.00),
+(14, 382000.00),
+(20, 133300.00),
+(11, 142300.00),
+(2, 145900.00),
+(8, 387200.00),
+(29, 390400.00),
+(16, 147700.00),
+(22, 141800.00),
+(7, 132500.00),
+(19, 384300.00),
+(6, 132400.00),
+(12, 138200.00),
+(28, 145500.00),
+(3, 130700.00),
+(9, 143900.00),
+(23, 391600.00),
+(10, 135800.00),
+(25, 142500.00),
+(1, 142200.00),
+(13, 386500.00),
+(21, 392700.00),
+(4, 125600.00),
+(27, 141900.00),
+(15, 147300.00),
+(5, 383100.00),
+(17, 132100.00),
+(2, 134200.00),
+(18, 387300.00),
+(6, 137500.00),
+(26, 146700.00),
+(19, 387400.00),
+(7, 131800.00),
+(20, 390600.00),
+(8, 139400.00),
+(28, 392900.00),
+(21, 130300.00),
+(29, 136800.00),
+(1, 142700.00),
+(22, 144300.00),
+(9, 389700.00),
+(23, 130600.00),
+(10, 146200.00),
+(24, 383400.00),
+(11, 139300.00),
+(19, 136200.00),
+(12, 131500.00),
+(26, 387000.00),
+(13, 141100.00),
+(27, 390800.00),
+(14, 144600.00),
+(28, 133000.00),
+(15, 138500.00),
+(29, 141400.00),
+(16, 383900.00),
+(1, 130900.00),
+(17, 146800.00),
+(2, 138800.00),
+(18, 389000.00),
+(3, 130200.00),
+(19, 146100.00),
+(1, 136300.00),
+(19, 383200.00),
+(5, 142000.00),
+(21, 389100.00),
+(6, 131000.00),
+(22, 138300.00),
+(7, 146500.00),
+(23, 384200.00),
+(8, 141700.00),
+(24, 134000.00),
+(9, 140000.00),
+(25, 389500.00),
+(10, 132700.00),
+(26, 147600.00),
+(11, 135700.00),
+(27, 390700.00),
+(12, 145400.00),
+(28, 139700.00),
+(28, 130500.00),
+(28, 384500.00),
+(14, 145000.00),
+(1, 137900.00),
+(15, 134100.00);
+
+SELECT * FROM Wages
+ORDER BY EmployeeID ASC;
+
+-- Fin de la creación de tablas
